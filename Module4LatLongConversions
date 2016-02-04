@@ -1,0 +1,10 @@
+> #function for converting latitude or longitude from degrees, minutes, seconds (DMS) to decimal degrees (DD)
+> toDD <- function(d,m,s) {
++  return(d+(m+(s/60))/60)}
+
+> #function for converting latitude or longitude from decimal degrees (DD) to degrees, minutes, seconds (DMS)
+> toDMS <- function(x) {
++  d <- round(x)
++  m <- round((x-d)*60)
++  s <- round((((x-d)*60)-m)*60)
++  return(matrix(c(d,m,s),ncol = 3, byrow = F)) }
