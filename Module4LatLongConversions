@@ -1,10 +1,18 @@
-> #function for converting latitude or longitude from degrees, minutes, seconds (DMS) to decimal degrees (DD)
+> #function for converting latitude or longitude from degrees, minutes, seconds (DMS) to decimal degrees (DD) format
 > toDD <- function(d,m,s) {
 +  return(d+(m+(s/60))/60)}
 
-> #function for converting latitude or longitude from decimal degrees (DD) to degrees, minutes, seconds (DMS)
+> #sample dataset of latitudes in DMS format (for use in testing toDD -- lat1[,1] is d, lat1[,2] is m, lat1[,3] is s)
+> lat1 <- matrix(c(28,17,5,27,32,14,27,52,40,28,19,10,26,20,50,26,37,33,27,44,17,27,7,15), ncol = 3, byrow = T)
+
+
+
+> #function for converting latitude or longitude from decimal degrees (DD) to degrees, minutes, seconds (DMS) format
 > toDMS <- function(x) {
 +  d <- round(x)
 +  m <- round((x-d)*60)
 +  s <- round((((x-d)*60)-m)*60)
-+  return(matrix(c(d,m,s),ncol = 3, byrow = F)) }
++  return(matrix(c(d,m,s),ncol = 3, byrow = T)) }
+
+> #sample dataset of latitudes in DD format (for use in testing toDMS)
+> lat2 <- c(26.79581,27.08522,26.70540,28.99432,26.01003,27.05729,27.52431,28.00521)
